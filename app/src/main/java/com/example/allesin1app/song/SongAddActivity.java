@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -54,7 +55,7 @@ public class SongAddActivity extends AppCompatActivity {
         songExplicit = findViewById(R.id.songExplicit);
     }
 
-    public void addSong(){
+    public void addSong(View view){
         song = new Song(songName.getText().toString(), songGenres.getText().toString(), songArtist.getText().toString(), songReleaseDate.getText().toString(), Integer.parseInt(songLength.getText().toString()), true);
         album.AddSongToAlbum(song);
         super.finish();

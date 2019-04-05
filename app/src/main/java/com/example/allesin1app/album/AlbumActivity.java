@@ -1,6 +1,7 @@
 package com.example.allesin1app.album;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,8 @@ import com.example.allesin1app.song.SongAddActivity;
 import java.util.ArrayList;
 
 public class AlbumActivity extends AppCompatActivity {
+
+    private static final String SHARED_PREFERENCE = "";
     private ArrayList<String> songNames = new ArrayList<>();
     private ArrayList<Song> songs;
     private int albumId;
@@ -42,6 +45,12 @@ public class AlbumActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         albumId = intent.getIntExtra("album id", 0);
+
+        if (albumId == 0){
+            SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE,0);
+            albumId = settings.getInt("album id", 0);
+        }
+
         album = gv.adp.findAlbumById(albumId);
 
         setTitle(album.getName());
@@ -61,6 +70,18 @@ public class AlbumActivity extends AppCompatActivity {
         adapter.clear();
         adapter.addAll(songNames);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE,0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        editor.clear();
+        editor.putInt("album id", albumId);
+        editor.apply();
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
