@@ -19,6 +19,26 @@ public class Song {
         this.explicit = explicit;
     }
 
+    public String getGenres() {
+        return genres;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public boolean isExplicit() {
+        return explicit;
+    }
+
     public int getId() {
         return id;
     }

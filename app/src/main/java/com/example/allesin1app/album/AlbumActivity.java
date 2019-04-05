@@ -27,17 +27,18 @@ public class AlbumActivity extends AppCompatActivity {
     private String songName;
     private TextView listItem;
     private ArrayAdapter<String> adapter;
+    private GlobalVars gv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        GlobalVars gv = (GlobalVars) getApplicationContext();
+        gv = (GlobalVars) getApplicationContext();
         Intent intent = getIntent();
 
         albumId = intent.getIntExtra("album id", 0);
@@ -46,31 +47,30 @@ public class AlbumActivity extends AppCompatActivity {
         setTitle(album.getName());
         updateSongList();
 
-        this.adapter = new ArrayAdapter<>(this, R.layout.generic_list_item, songNames);
+        adapter = new ArrayAdapter<>(this, R.layout.generic_list_item, songNames);
 
         ListView listView = findViewById(R.id.songList);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listItem = view.findViewById(R.id.label);
-                songName = listItem.getText().toString();
-                song = album.findSongByName(songName);
-                goToSong(song.getId());
-            }
-        });
+        listView.setOnItemClickListener(this::onItemClick);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateSongList();
-        this.adapter.clear();
-        this.adapter.addAll(songNames);
-        this.adapter.notifyDataSetChanged();
+        adapter.clear();
+        adapter.addAll(songNames);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        listItem = view.findViewById(R.id.label);
+        songName = listItem.getText().toString();
+        song = album.findSongByName(songName);
+        goToSong(song.getId());
     }
 
     public void updateSongList(){
-        GlobalVars gv = (GlobalVars) getApplicationContext();
         album = gv.adp.findAlbumById(albumId);
         songs = album.getAlbumSongs();
         songNames = new ArrayList<>();

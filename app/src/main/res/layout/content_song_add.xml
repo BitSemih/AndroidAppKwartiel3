@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorMainBackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".song.SongAddActivity"
     tools:showIn="@layout/activity_song_add">
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_name_placeholder"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/songGenres"
@@ -27,7 +29,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_genre_placeholder"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/songArtist"
@@ -35,7 +38,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_artist_placeholder"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/songReleaseDate"
@@ -43,7 +47,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_release_placeholder"
-            android:inputType="textPersonName" />
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/songLength"
@@ -51,20 +55,23 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_length_placeholder"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/colorText" />
 
-        <EditText
+        <CheckBox
             android:id="@+id/songExplicit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/song_explicit_placeholder"
-            android:inputType="textPersonName" />
+            android:text="@string/song_explicit_placeholder"
+            android:textColor="@color/colorTextHighlight"
+            android:textSize="18sp"
+            android:theme="@style/CheckboxTheme" />
 
         <Button
-            android:id="@+id/songAddButton"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/song_add_button" />
+
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

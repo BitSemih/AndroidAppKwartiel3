@@ -1,7 +1,5 @@
 package com.example.allesin1app.album;
 
-import com.example.allesin1app.GlobalVars;
-
 import java.util.ArrayList;
 
 public class AlbumDataProvider {

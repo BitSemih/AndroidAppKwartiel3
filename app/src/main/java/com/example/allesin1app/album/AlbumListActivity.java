@@ -2,6 +2,7 @@ package com.example.allesin1app.album;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,16 +24,17 @@ public class AlbumListActivity extends AppCompatActivity {
     private TextView listItem;
     private String albumName;
     private Album album;
+    private GlobalVars gv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        GlobalVars gv = (GlobalVars) getApplicationContext();
+        gv = (GlobalVars) getApplicationContext();
 
         updateAlbumList();
 
@@ -40,14 +42,7 @@ public class AlbumListActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.albumList);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listItem = view.findViewById(R.id.label);
-                albumName = listItem.getText().toString();
-                album = gv.adp.findAlbumByName(albumName);
-                goToAlbum(album.getId());
-            }
-        });
+        listView.setOnItemClickListener(this::onItemClick);
     }
 
     @Override
@@ -59,8 +54,14 @@ public class AlbumListActivity extends AppCompatActivity {
         this.adapter.notifyDataSetChanged();
     }
 
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        listItem = view.findViewById(R.id.label);
+        albumName = listItem.getText().toString();
+        album = gv.adp.findAlbumByName(albumName);
+        goToAlbum(album.getId());
+    }
+
     public void updateAlbumList(){
-        GlobalVars gv = (GlobalVars) getApplicationContext();
         albums = gv.adp.getAlbums();
         albumNames = new ArrayList<>();
 

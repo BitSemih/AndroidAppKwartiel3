@@ -12,7 +12,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".song.SongActivity"
-            android:label="@string/title_activity_song"
             android:parentActivityName=".album.AlbumActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

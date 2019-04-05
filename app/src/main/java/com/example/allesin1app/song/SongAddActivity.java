@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.allesin1app.GlobalVars;
 import com.example.allesin1app.R;
@@ -19,11 +21,11 @@ import java.util.ArrayList;
 
 public class SongAddActivity extends AppCompatActivity {
 
-    private EditText songName, songGenres, songArtist, songReleaseDate, songLength, songExplicit;
-    private Button songAddButton;
-    private Song song;
+    private EditText songName, songGenres, songArtist, songReleaseDate, songLength;
     private ArrayList<Album> albums;
     private Album album;
+    private Song song;
+    private CheckBox songExplicit;
     private int albumId;
 
     @Override
@@ -50,9 +52,6 @@ public class SongAddActivity extends AppCompatActivity {
         songReleaseDate = findViewById(R.id.songReleaseDate);
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
-        songAddButton = findViewById(R.id.songAddButton);
-
-        songAddButton.setOnClickListener(View -> addSong());
     }
 
     public void addSong(){

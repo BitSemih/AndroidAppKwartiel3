@@ -33,6 +33,21 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_album" />
+    <include
+        android:id="@+id/include2"
+        layout="@layout/content_album" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addSongFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50px"
+        android:layout_marginBottom="50px"
+        android:clickable="true"
+        android:onClick="goAddSong"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@+id/include2"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>

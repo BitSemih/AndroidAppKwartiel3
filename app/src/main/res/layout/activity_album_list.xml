@@ -33,6 +33,22 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_album_list" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_album_list" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addAlbumFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50px"
+        android:layout_marginBottom="50px"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:onClick="goAddAlbum"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/ic_baseline_add_white" />
 
 </android.support.design.widget.CoordinatorLayout>
