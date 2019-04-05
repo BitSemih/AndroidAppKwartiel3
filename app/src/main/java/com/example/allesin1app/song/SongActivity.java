@@ -38,7 +38,7 @@ public class SongActivity extends AppCompatActivity {
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
 
-        gv = (GlobalVars) getApplicationContext();
+        this.gv = (GlobalVars) getApplicationContext();
         album = gv.adp.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName());
