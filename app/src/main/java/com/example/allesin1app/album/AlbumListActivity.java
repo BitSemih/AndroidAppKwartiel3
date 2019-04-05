@@ -18,6 +18,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AlbumListActivity extends AppCompatActivity {
+
     private ArrayList<Album> albums = new ArrayList<>();
     private ArrayList<String> albumNames;
     private ArrayAdapter<String> adapter;
@@ -32,6 +33,7 @@ public class AlbumListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_album_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gv = (GlobalVars) getApplicationContext();

@@ -5,11 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.example.allesin1app.GlobalVars;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
+import com.example.allesin1app.album.AlbumActivity;
 
 public class SongActivity extends AppCompatActivity {
 
@@ -29,6 +32,8 @@ public class SongActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.gv = (GlobalVars) getApplicationContext();
+
         Intent intent = getIntent();
 
         songId = intent.getIntExtra("song id", 0);
@@ -47,7 +52,7 @@ public class SongActivity extends AppCompatActivity {
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
 
-        this.gv = (GlobalVars) getApplicationContext();
+
         album = gv.adp.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName());
@@ -76,5 +81,12 @@ public class SongActivity extends AppCompatActivity {
         editor.putInt("song id", songId);
         editor.putInt("album id", albumId);
         editor.apply();
+    }
+
+    public void goEditSong(View view) {
+        Intent intent = new Intent(this, SongEditActivity.class);
+        intent.putExtra("song id", songId);
+        intent.putExtra("album id", albumId);
+        startActivity(intent);
     }
 }
