@@ -33,6 +33,18 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/deleteAlbumFab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="75px"
+        android:clickable="true"
+        android:onClick="deleteAlbum"
+        app:backgroundTint="#fff"
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@android:drawable/ic_delete" />
+
     <include
         android:id="@+id/include2"
         layout="@layout/content_album" />

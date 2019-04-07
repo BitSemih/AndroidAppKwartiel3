@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorMainBackground">#303030</color>
     <color name="colorTextHighlight">#00D554</color>
-    <color name="colorText">#FFF</color>
+    <color name="colorText">#FFFFFF</color>
     <color name="colorNotExplicitCheckbox">#F82D2D</color>
     <color name="colorExplicitCheckbox">#00AD1C</color>
 </resources>

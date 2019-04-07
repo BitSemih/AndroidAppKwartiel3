@@ -102,4 +102,9 @@ public class AlbumActivity extends AppCompatActivity {
         intent.putExtra("album id", albumId);
         startActivity(intent);
     }
+
+    public void deleteAlbum(View view) {
+        gv.adp.deleteAlbum(album);
+        finish();
+    }
 }

@@ -44,6 +44,10 @@ public class Album {
         return null;
     }
 
+    public void deleteSong(Song song){
+        songs.remove(song);
+    }
+
     public int getId(){
         return id;
     }

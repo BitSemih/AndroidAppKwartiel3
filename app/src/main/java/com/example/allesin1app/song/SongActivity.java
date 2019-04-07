@@ -74,8 +74,8 @@ public class SongActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        album = gv.adp.findAlbumById(albumId);
-        song = album.findSongById(songId);
+        this.album = gv.adp.findAlbumById(albumId);
+        this.song = album.findSongById(songId);
         setTitle(song.getName());
         if (song != null) {
             songName.setText(song.getName());
@@ -96,5 +96,10 @@ public class SongActivity extends AppCompatActivity {
         intent.putExtra("song id", songId);
         intent.putExtra("album id", albumId);
         startActivity(intent);
+    }
+
+    public void deleteSong(View view){
+        album.deleteSong(song);
+        finish();
     }
 }

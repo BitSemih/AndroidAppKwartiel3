@@ -22,6 +22,7 @@ public class SongAddActivity extends AppCompatActivity {
     private Song song;
     private CheckBox songExplicit;
     private int albumId;
+    private boolean checked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,10 @@ public class SongAddActivity extends AppCompatActivity {
     }
 
     public void addSong(View view){
-        song = new Song(songName.getText().toString(), songGenres.getText().toString(), songArtist.getText().toString(), songReleaseDate.getText().toString(), Integer.parseInt(songLength.getText().toString()), true);
+        if (songExplicit.isChecked()){
+            checked = true;
+        }
+        song = new Song(songName.getText().toString(), songGenres.getText().toString(), songArtist.getText().toString(), songReleaseDate.getText().toString(), Integer.parseInt(songLength.getText().toString()), checked);
         album.AddSongToAlbum(song);
         super.finish();
     }

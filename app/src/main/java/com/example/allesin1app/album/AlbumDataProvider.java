@@ -32,6 +32,10 @@ public class AlbumDataProvider {
         albums.add(album);
     }
 
+    public void deleteAlbum(Album album){
+        albums.remove(album);
+    }
+
     public ArrayList<Album> getAlbums(){
         return albums;
     }
