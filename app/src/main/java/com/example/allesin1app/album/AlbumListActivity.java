@@ -20,8 +20,7 @@ import java.util.ArrayList;
 public class AlbumListActivity extends AppCompatActivity {
 
     private ArrayList<Album> albums = new ArrayList<>();
-    private ArrayList<String> albumNames;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<Album> adapter;
     private TextView listItem;
     private String albumName;
     private Album album;
@@ -38,9 +37,8 @@ public class AlbumListActivity extends AppCompatActivity {
 
         gv = (GlobalVars) getApplicationContext();
 
-        updateAlbumList();
-
-        this.adapter = new ArrayAdapter<>(this, R.layout.generic_list_item, albumNames);
+        albums = gv.adp.getAlbums();
+        this.adapter = new AlbumAdapter(this, albums);
 
         ListView listView = findViewById(R.id.albumList);
         listView.setAdapter(adapter);
@@ -50,26 +48,14 @@ public class AlbumListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateAlbumList();
-        this.adapter.clear();
-        this.adapter.addAll(albumNames);
         this.adapter.notifyDataSetChanged();
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        listItem = view.findViewById(R.id.label);
+        listItem = view.findViewById(R.id.listItem);
         albumName = listItem.getText().toString();
         album = gv.adp.findAlbumByName(albumName);
         goToAlbum(album.getId());
-    }
-
-    public void updateAlbumList(){
-        albums = gv.adp.getAlbums();
-        albumNames = new ArrayList<>();
-
-        for (Album album : albums) {
-            this.albumNames.add(album.getName());
-        }
     }
 
     public void goToAlbum(int albumId) {

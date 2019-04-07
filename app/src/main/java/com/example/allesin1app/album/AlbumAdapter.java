@@ -1,4 +1,4 @@
-package com.example.allesin1app.song;
+package com.example.allesin1app.album;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,15 +14,15 @@ import com.example.allesin1app.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongAdapter extends ArrayAdapter<Song> {
+public class AlbumAdapter extends ArrayAdapter<Album> {
 
     private Context context;
-    private List<Song> songList;
+    private List<Album> albumList;
 
-    public SongAdapter(@NonNull Context context, ArrayList<Song> list) {
+    public AlbumAdapter(@NonNull Context context, ArrayList<Album> list) {
         super(context, 0, list);
         this.context = context;
-        this.songList = list;
+        this.albumList = list;
         System.out.println(list);
     }
 
@@ -34,12 +34,11 @@ public class SongAdapter extends ArrayAdapter<Song> {
             listItem = LayoutInflater.from(context).inflate(R.layout.generic_list_item, parent, false);
         }
 
-        Song currentSong = songList.get(position);
+        Album currentAlbum = albumList.get(position);
 
         TextView name = listItem.findViewById(R.id.listItem);
-        name.setText(currentSong.getName());
+        name.setText(currentAlbum.getName());
 
         return listItem;
     }
 }
-

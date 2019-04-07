@@ -15,6 +15,7 @@ import com.example.allesin1app.GlobalVars;
 import com.example.allesin1app.R;
 import com.example.allesin1app.song.Song;
 import com.example.allesin1app.song.SongActivity;
+import com.example.allesin1app.song.SongAdapter;
 import com.example.allesin1app.song.SongAddActivity;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class AlbumActivity extends AppCompatActivity {
     private Album album;
     private String songName;
     private TextView listItem;
-    private ArrayAdapter<String> adapter;
+    private SongAdapter adapter;
     private GlobalVars gv;
 
     @Override
@@ -54,9 +55,10 @@ public class AlbumActivity extends AppCompatActivity {
         album = gv.adp.findAlbumById(albumId);
 
         setTitle(album.getName());
-        updateSongList();
 
-        adapter = new ArrayAdapter<>(this, R.layout.generic_list_item, songNames);
+        album = gv.adp.findAlbumById(albumId);
+        songs = album.getAlbumSongs();
+        this.adapter = new SongAdapter(this, songs);
 
         ListView listView = findViewById(R.id.songList);
         listView.setAdapter(adapter);
@@ -66,10 +68,7 @@ public class AlbumActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateSongList();
-        adapter.clear();
-        adapter.addAll(songNames);
-        adapter.notifyDataSetChanged();
+        this.adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -85,20 +84,10 @@ public class AlbumActivity extends AppCompatActivity {
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        listItem = view.findViewById(R.id.label);
+        listItem = view.findViewById(R.id.listItem);
         songName = listItem.getText().toString();
         song = album.findSongByName(songName);
         goToSong(song.getId());
-    }
-
-    public void updateSongList(){
-        album = gv.adp.findAlbumById(albumId);
-        songs = album.getAlbumSongs();
-        songNames = new ArrayList<>();
-
-        for (Song song : songs) {
-            songNames.add(song.getName());
-        }
     }
 
     public void goAddSong(View view) {
