@@ -41,9 +41,9 @@ public class AlbumActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        gv = (GlobalVars) getApplicationContext();
-        Intent intent = getIntent();
+        this.gv = (GlobalVars) getApplicationContext();
 
+        Intent intent = getIntent();
         albumId = intent.getIntExtra("album id", 0);
 
         if (albumId == 0){

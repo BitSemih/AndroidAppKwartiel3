@@ -30,6 +30,8 @@ public class SongEditActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.gv = (GlobalVars) getApplicationContext();
+
         Intent intent = getIntent();
         this.songId = intent.getIntExtra("song id", 0);
         this.albumId = intent.getIntExtra("album id", 0);
@@ -51,9 +53,7 @@ public class SongEditActivity extends AppCompatActivity {
             songArtist.setText(song.getArtist());
             songReleaseDate.setText(song.getReleaseDate());
             songLength.setText(String.valueOf(song.getLength()));
-            if (song.isExplicit()) {
-                songExplicit.setChecked(true);
-            }
+            songExplicit.setChecked(song.isExplicit());
         }
     }
 

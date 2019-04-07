@@ -35,7 +35,6 @@ public class SongActivity extends AppCompatActivity {
         this.gv = (GlobalVars) getApplicationContext();
 
         Intent intent = getIntent();
-
         songId = intent.getIntExtra("song id", 0);
         albumId = intent.getIntExtra("album id", 0);
 
@@ -52,7 +51,29 @@ public class SongActivity extends AppCompatActivity {
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
 
+        getData();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        editor.clear();
+        editor.putInt("song id", songId);
+        editor.putInt("album id", albumId);
+        editor.apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getData();
+    }
+
+    private void getData() {
         album = gv.adp.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName());
@@ -68,19 +89,6 @@ public class SongActivity extends AppCompatActivity {
                 songExplicit.setText("Niet Explicit");
             }
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
-        SharedPreferences.Editor editor = settings.edit();
-
-        editor.clear();
-        editor.putInt("song id", songId);
-        editor.putInt("album id", albumId);
-        editor.apply();
     }
 
     public void goEditSong(View view) {
