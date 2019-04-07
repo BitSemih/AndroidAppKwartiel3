@@ -1,22 +1,16 @@
 package com.example.allesin1app.song;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Switch;
 
 import com.example.allesin1app.GlobalVars;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
-import com.example.allesin1app.album.AlbumActivity;
-import com.example.allesin1app.album.AlbumDataProvider;
-import com.example.allesin1app.album.AlbumListActivity;
 
 import java.util.ArrayList;
 

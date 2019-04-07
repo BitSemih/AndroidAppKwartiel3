@@ -47,6 +47,30 @@ public class Song {
         return songName;
     }
 
+    public void setSongName(String songName) {
+        this.songName = songName;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setExplicit(boolean explicit) {
+        this.explicit = explicit;
+    }
+
     @Override
     public String toString() {
         return "Song{" +

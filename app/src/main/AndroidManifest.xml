@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".song.SongEditActivity"
+        <activity
+            android:name=".song.SongEditActivity"
+            android:label="@string/title_activity_song_edit"
             android:parentActivityName=".song.SongActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

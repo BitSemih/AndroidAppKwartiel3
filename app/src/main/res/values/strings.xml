@@ -20,4 +20,6 @@
     <string name="album_add_release" translatable="false">Uitgeef datum</string>
     <string name="album_add_confirm" translatable="false">Voeg album toe</string>
     <string name="song_add_button" translatable="false">Voeg lied toe</string>
+    <string name="song_edit_button">Bevestig bewerking</string>
+    <string name="title_activity_song_edit">SongEditActivity</string>
 </resources>

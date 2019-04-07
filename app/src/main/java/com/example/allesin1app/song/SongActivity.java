@@ -39,8 +39,8 @@ public class SongActivity extends AppCompatActivity {
         songId = intent.getIntExtra("song id", 0);
         albumId = intent.getIntExtra("album id", 0);
 
-        if (songId == 0 && albumId == 0){
-            SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE,0);
+        if (songId == 0 && albumId == 0) {
+            SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
             songId = settings.getInt("song id", 0);
             albumId = settings.getInt("album id", 0);
         }
@@ -56,13 +56,13 @@ public class SongActivity extends AppCompatActivity {
         album = gv.adp.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName());
-        if (song != null){
+        if (song != null) {
             songName.setText(song.getName());
             songGenres.setText(song.getGenres());
             songArtist.setText(song.getArtist());
             songReleaseDate.setText(song.getReleaseDate());
             songLength.setText(String.valueOf(song.getLength()));
-            if (song.isExplicit()){
+            if (song.isExplicit()) {
                 songExplicit.setText("Explicit");
             } else {
                 songExplicit.setText("Niet Explicit");
@@ -74,7 +74,7 @@ public class SongActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE,0);
+        SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.clear();
