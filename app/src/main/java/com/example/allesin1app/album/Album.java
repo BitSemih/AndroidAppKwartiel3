@@ -3,14 +3,16 @@ package com.example.allesin1app.album;
 import com.example.allesin1app.song.Song;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Album {
     private static int lastid;
     private int id;
     private ArrayList<Song> songs;
-    private String albumName, albumReleaseDate;
+    private String albumName;
+    private Date albumReleaseDate;
 
-    public Album(String albumName, String albumReleaseDate){
+    public Album(String albumName, Date albumReleaseDate){
         songs = new ArrayList<>();
         lastid++;
         this.id = lastid;

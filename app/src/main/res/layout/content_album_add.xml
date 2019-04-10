@@ -23,19 +23,24 @@
             android:inputType="textPersonName"
             android:textColor="@color/colorText" />
 
-        <EditText
-            android:id="@+id/addAlbumRelease"
+        <TextView
+            android:id="@+id/albumDateView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:background="@color/colorTextHighlight"
             android:ems="10"
-            android:hint="@string/album_add_release"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorText" />
+            android:onClick="setDate"
+            android:paddingLeft="10px"
+            android:paddingTop="25px"
+            android:paddingBottom="25px" />
 
         <Button
             android:id="@+id/albumAddButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="addAlbum"
             android:text="@string/album_add_confirm" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

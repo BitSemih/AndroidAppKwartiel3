@@ -23,7 +23,6 @@ public class SongAdapter extends ArrayAdapter<Song> {
         super(context, 0, list);
         this.context = context;
         this.songList = list;
-        System.out.println(list);
     }
 
     @NonNull
