@@ -18,12 +18,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.allesin1app.compound.SongCompound
-        android:id="@+id/sidespinner_fruits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

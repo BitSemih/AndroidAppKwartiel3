@@ -9,40 +9,12 @@
     tools:context=".song.SongActivity"
     tools:showIn="@layout/activity_song">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.example.allesin1app.compound.SongCompound
+        android:id="@+id/compound_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/songName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/songGenres"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/songArtist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/songReleaseDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/songLength"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/songExplicit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

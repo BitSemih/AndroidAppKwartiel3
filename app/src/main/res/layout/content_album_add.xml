@@ -19,16 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/album_add_name"
             android:inputType="textPersonName"
-            android:text="@string/album_add_name" />
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/addAlbumRelease"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/album_add_release"
             android:inputType="textPersonName"
-            android:text="@string/album_add_release" />
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/albumAddButton"

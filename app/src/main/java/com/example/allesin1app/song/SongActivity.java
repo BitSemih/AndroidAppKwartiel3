@@ -13,11 +13,13 @@ import com.example.allesin1app.GlobalVars;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 import com.example.allesin1app.album.AlbumActivity;
+import com.example.allesin1app.compound.SongCompound;
 
 public class SongActivity extends AppCompatActivity {
 
     private static final String SHARED_PREFERENCE = "";
     private int songId, albumId;
+    private SongCompound comp;
     private Song song;
     private Album album;
     private GlobalVars gv;
@@ -35,23 +37,24 @@ public class SongActivity extends AppCompatActivity {
         this.gv = (GlobalVars) getApplicationContext();
 
         Intent intent = getIntent();
-        songId = intent.getIntExtra("song id", 0);
-        albumId = intent.getIntExtra("album id", 0);
+        this.songId = intent.getIntExtra("song id", 0);
+        this.albumId = intent.getIntExtra("album id", 0);
 
         if (songId == 0 && albumId == 0) {
             SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
-            songId = settings.getInt("song id", 0);
-            albumId = settings.getInt("album id", 0);
+            this.songId = settings.getInt("song id", 0);
+            this.albumId = settings.getInt("album id", 0);
+
         }
 
-        songName = findViewById(R.id.songName);
-        songGenres = findViewById(R.id.songGenres);
-        songArtist = findViewById(R.id.songArtist);
-        songReleaseDate = findViewById(R.id.songReleaseDate);
-        songLength = findViewById(R.id.songLength);
-        songExplicit = findViewById(R.id.songExplicit);
+        System.out.println(songId);
+        System.out.println(albumId);
 
-        getData();
+        this.album = gv.adp.findAlbumById(this.albumId);
+        this.song = album.findSongById(this.songId);
+
+        this.comp = this.findViewById(R.id.compound_view);
+        comp.populateView(this.song);
     }
 
     @Override
@@ -70,26 +73,16 @@ public class SongActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getData();
-    }
-
-    private void getData() {
-        this.album = gv.adp.findAlbumById(albumId);
-        this.song = album.findSongById(songId);
-        setTitle(song.getName());
-        if (song != null) {
-            songName.setText(song.getName());
-            songGenres.setText(song.getGenres());
-            songArtist.setText(song.getArtist());
-            songReleaseDate.setText(song.getReleaseDate());
-            songLength.setText(String.valueOf(song.getLength()));
-            if (song.isExplicit()) {
-                songExplicit.setText("Explicit");
-            } else {
-                songExplicit.setText("Niet Explicit");
-            }
+        this.album = gv.adp.findAlbumById(this.albumId);
+        this.song = album.findSongById(this.songId);
+        System.out.println(song);
+        if (song == null){
+            System.out.println("PANIEK");
+        } else {
+            this.comp.populateView(this.song);
         }
     }
+
 
     public void goEditSong(View view) {
         Intent intent = new Intent(this, SongEditActivity.class);
