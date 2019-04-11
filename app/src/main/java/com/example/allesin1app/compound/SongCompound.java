@@ -11,7 +11,7 @@ import com.example.allesin1app.song.Song;
 
 import java.util.Date;
 
-//Custom compound controller for song overview
+//Custom SongCompound controller for song overview
 public class SongCompound extends LinearLayout {
 
     private Context context;
