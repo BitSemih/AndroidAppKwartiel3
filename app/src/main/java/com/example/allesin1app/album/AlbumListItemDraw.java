@@ -65,7 +65,7 @@ public class AlbumListItemDraw extends View {
         for (int i = 0; i < this.count; i++) {
             canvas.drawRect(30 + nextRect, 10 + nextRectHeight, 80 + nextRect, 20 + nextRectHeight, paint);
             nextRect += 80;
-            if (i + 2 > (maxRectanglesOnRow * rowNumber)) {
+            if ((i + 2) > (maxRectanglesOnRow * rowNumber)) {
                 nextRectHeight += 20;
                 rowNumber++;
                 nextRect = 0;

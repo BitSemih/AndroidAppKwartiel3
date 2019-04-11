@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/song_length_placeholder"
-            android:inputType="number|textPersonName"
+            android:inputType="number"
             android:textColor="@color/colorText" />
 
         <CheckBox
