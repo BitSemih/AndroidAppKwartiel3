@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 
 import java.text.DateFormat;
@@ -51,7 +51,7 @@ public class AlbumAddActivity extends AppCompatActivity {
 
     public void addAlbum(View view) {
         album = new Album(this.albumName.getText().toString(), this.releaseDate);
-        ((GlobalVars) getApplicationContext()).adp.addToAlbums(album);
+        ((AlbumApplication) getApplicationContext()).albumDataProvider.addToAlbums(album);
         finish();
     }
 

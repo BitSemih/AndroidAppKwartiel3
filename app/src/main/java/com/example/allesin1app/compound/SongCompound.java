@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 import com.example.allesin1app.song.Song;
@@ -17,7 +17,7 @@ public class SongCompound extends LinearLayout {
 
     private Context context;
     private TextView songName, songGenres, songArtist, songReleaseDate, songLength, songExplicit;
-    private GlobalVars gv;
+    private AlbumApplication gv;
     private Date date;
 
 

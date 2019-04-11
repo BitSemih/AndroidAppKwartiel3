@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 import com.example.allesin1app.album.AlbumActivity;
@@ -22,7 +22,7 @@ public class SongActivity extends AppCompatActivity {
     private SongCompound comp;
     private Song song;
     private Album album;
-    private GlobalVars gv;
+    private AlbumApplication gv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class SongActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.gv = (GlobalVars) getApplicationContext();
+        this.gv = (AlbumApplication) getApplicationContext();
 
         Intent intent = getIntent();
         this.songId = intent.getIntExtra("song id", 0);
@@ -45,7 +45,7 @@ public class SongActivity extends AppCompatActivity {
             this.albumId = settings.getInt("album id", 0);
         }
 
-        this.album = gv.adp.findAlbumById(this.albumId);
+        this.album = gv.albumDataProvider.findAlbumById(this.albumId);
         this.song = album.findSongById(this.songId);
 
         this.comp = this.findViewById(R.id.compound_view);
@@ -68,7 +68,7 @@ public class SongActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        this.album = gv.adp.findAlbumById(this.albumId);
+        this.album = gv.albumDataProvider.findAlbumById(this.albumId);
         this.song = album.findSongById(this.songId);
         System.out.println(song);
         if (song == null){

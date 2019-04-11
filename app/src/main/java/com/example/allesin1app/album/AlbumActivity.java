@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.song.Song;
 import com.example.allesin1app.song.SongActivity;
@@ -30,7 +30,7 @@ public class AlbumActivity extends AppCompatActivity {
     private String songName;
     private TextView listItem;
     private SongAdapter adapter;
-    private GlobalVars gv;
+    private AlbumApplication gv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class AlbumActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.gv = (GlobalVars) getApplicationContext();
+        this.gv = (AlbumApplication) getApplicationContext();
 
         Intent intent = getIntent();
         albumId = intent.getIntExtra("album id", 0);
@@ -51,11 +51,11 @@ public class AlbumActivity extends AppCompatActivity {
             albumId = settings.getInt("album id", 0);
         }
 
-        album = gv.adp.findAlbumById(albumId);
+        album = gv.albumDataProvider.findAlbumById(albumId);
 
         setTitle(album.getName());
 
-        album = gv.adp.findAlbumById(albumId);
+        album = gv.albumDataProvider.findAlbumById(albumId);
         songs = album.getAlbumSongs();
         this.adapter = new SongAdapter(this, songs);
 
@@ -103,7 +103,7 @@ public class AlbumActivity extends AppCompatActivity {
     }
 
     public void deleteAlbum(View view) {
-        gv.adp.deleteAlbum(album);
+        gv.albumDataProvider.deleteAlbum(album);
         finish();
     }
 }

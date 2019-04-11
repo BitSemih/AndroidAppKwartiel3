@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 
 import java.lang.reflect.Array;
@@ -25,7 +25,7 @@ public class AlbumListActivity extends AppCompatActivity {
     private TextView listItem;
     private String albumName;
     private Album album;
-    private GlobalVars gv;
+    private AlbumApplication gv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,9 @@ public class AlbumListActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        gv = (GlobalVars) getApplicationContext();
+        gv = (AlbumApplication) getApplicationContext();
 
-        albums = gv.adp.getAlbums();
+        albums = gv.albumDataProvider.getAlbums();
         this.adapter = new AlbumAdapter(this, albums);
 
         ListView listView = findViewById(R.id.albumList);
@@ -55,7 +55,7 @@ public class AlbumListActivity extends AppCompatActivity {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         listItem = view.findViewById(R.id.listItem);
         albumName = listItem.getText().toString();
-        album = gv.adp.findAlbumByName(albumName);
+        album = gv.albumDataProvider.findAlbumByName(albumName);
         goToAlbum(album.getId());
     }
 

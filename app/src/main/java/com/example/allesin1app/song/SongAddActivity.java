@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 
@@ -41,11 +41,11 @@ public class SongAddActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        GlobalVars gv = (GlobalVars) getApplicationContext();
+        AlbumApplication gv = (AlbumApplication) getApplicationContext();
         Intent intent = getIntent();
 
         albumId = intent.getIntExtra("album id", 0);
-        album = gv.adp.findAlbumById(albumId);
+        album = gv.albumDataProvider.findAlbumById(albumId);
 
         songName = findViewById(R.id.songName);
         songGenres = findViewById(R.id.songGenres);

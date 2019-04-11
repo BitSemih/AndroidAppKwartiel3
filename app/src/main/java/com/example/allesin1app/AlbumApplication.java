@@ -9,11 +9,11 @@ import com.example.allesin1app.song.Song;
 import java.util.Date;
 
 // Rename to ~album application
-// Geen afkortingen van "adp" maken gwn voluit
-public class GlobalVars extends Application {
-    public AlbumDataProvider adp = new AlbumDataProvider();
+// Geen afkortingen van "albumDataProvider" maken gwn voluit
+public class AlbumApplication extends Application {
+    public AlbumDataProvider albumDataProvider = new AlbumDataProvider();
 
-    public GlobalVars() {
+    public AlbumApplication() {
         //Data added to the app on startup
 
         //Create album
@@ -23,11 +23,12 @@ public class GlobalVars extends Application {
         Album album4 = new Album("Gaafe album", new Date(1999, 4, 20));
         Album album5 = new Album("Super coole album", new Date(1999, 4, 20));
 
-        this.adp.addToAlbums(album1);
-        this.adp.addToAlbums(album2);
-        this.adp.addToAlbums(album3);
-        this.adp.addToAlbums(album4);
-        this.adp.addToAlbums(album5);
+        //Add album to data provider
+        this.albumDataProvider.addToAlbums(album1);
+        this.albumDataProvider.addToAlbums(album2);
+        this.albumDataProvider.addToAlbums(album3);
+        this.albumDataProvider.addToAlbums(album4);
+        this.albumDataProvider.addToAlbums(album5);
 
         //Create songs
         Song song1 = new Song("Cool liedje", "Hip-hop", "Henk", new Date(1999, 4, 20), 300, true);
@@ -67,7 +68,5 @@ public class GlobalVars extends Application {
         album5.AddSongToAlbum(song3);
         album5.AddSongToAlbum(song2);
         album5.AddSongToAlbum(song8);
-
-
     }
 }

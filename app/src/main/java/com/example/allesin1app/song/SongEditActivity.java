@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.allesin1app.GlobalVars;
+import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 
@@ -23,7 +23,7 @@ import java.util.Date;
 public class SongEditActivity extends AppCompatActivity {
 
     private int songId, albumId, year, month, day;
-    private GlobalVars gv;
+    private AlbumApplication gv;
     private Album album;
     private Song song;
     private Date date, newReleaseDate;
@@ -40,13 +40,13 @@ public class SongEditActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.gv = (GlobalVars) getApplicationContext();
+        this.gv = (AlbumApplication) getApplicationContext();
 
         Intent intent = getIntent();
         this.songId = intent.getIntExtra("song id", 0);
         this.albumId = intent.getIntExtra("album id", 0);
 
-        album = gv.adp.findAlbumById(albumId);
+        album = gv.albumDataProvider.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName() + " (bewerking modus)");
 
