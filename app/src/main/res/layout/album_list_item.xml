@@ -7,16 +7,17 @@
 
     <TextView
         android:id="@+id/listItem"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dip"
         android:textSize="16dip"
         android:textStyle="bold"></TextView>
 
-    <TextView
-        android:id="@+id/albumSongCount"
+    <com.example.allesin1app.album.AlbumListItemDraw
+        android:id="@+id/albumSongCounter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dip"
-        android:textColor="@color/colorTextHighlight" />
+        android:layout_height="37dp">
+
+    </com.example.allesin1app.album.AlbumListItemDraw>
+
 </LinearLayout>

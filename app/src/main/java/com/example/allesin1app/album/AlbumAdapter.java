@@ -1,6 +1,10 @@
 package com.example.allesin1app.album;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -34,12 +38,15 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         }
 
         Album currentAlbum = albumList.get(position);
+        int songCount = currentAlbum.getSongCount();
+
+        AlbumListItemDraw x = listItem.findViewById(R.id.albumSongCounter);
+        x.rectangleCount(songCount);
 
         TextView name = listItem.findViewById(R.id.listItem);
-        TextView albumSongCount = listItem.findViewById(R.id.albumSongCount);
+
         name.setText(currentAlbum.getName());
-        int songCount = currentAlbum.getSongCount();
-        albumSongCount.setText(String.valueOf(songCount));
+
         return listItem;
     }
 }
