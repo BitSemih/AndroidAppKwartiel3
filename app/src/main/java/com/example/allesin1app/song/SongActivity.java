@@ -45,7 +45,7 @@ public class SongActivity extends AppCompatActivity {
             this.albumId = settings.getInt("album id", 0);
         }
 
-        this.album = gv.albumDataProvider.findAlbumById(this.albumId);
+        this.album = gv.adp.findAlbumById(this.albumId);
         this.song = album.findSongById(this.songId);
 
         this.comp = this.findViewById(R.id.compound_view);
@@ -68,7 +68,7 @@ public class SongActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        this.album = gv.albumDataProvider.findAlbumById(this.albumId);
+        this.album = gv.adp.findAlbumById(this.albumId);
         this.song = album.findSongById(this.songId);
         System.out.println(song);
         if (song == null){

@@ -51,7 +51,7 @@ public class AlbumAddActivity extends AppCompatActivity {
 
     public void addAlbum(View view) {
         album = new Album(this.albumName.getText().toString(), this.releaseDate);
-        ((GlobalVars) getApplicationContext()).albumDataProvider.addToAlbums(album);
+        ((GlobalVars) getApplicationContext()).adp.addToAlbums(album);
         finish();
     }
 

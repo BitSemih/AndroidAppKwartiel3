@@ -51,11 +51,11 @@ public class AlbumActivity extends AppCompatActivity {
             albumId = settings.getInt("album id", 0);
         }
 
-        album = gv.albumDataProvider.findAlbumById(albumId);
+        album = gv.adp.findAlbumById(albumId);
 
         setTitle(album.getName());
 
-        album = gv.albumDataProvider.findAlbumById(albumId);
+        album = gv.adp.findAlbumById(albumId);
         songs = album.getAlbumSongs();
         this.adapter = new SongAdapter(this, songs);
 
@@ -103,7 +103,7 @@ public class AlbumActivity extends AppCompatActivity {
     }
 
     public void deleteAlbum(View view) {
-        gv.albumDataProvider.deleteAlbum(album);
+        gv.adp.deleteAlbum(album);
         finish();
     }
 }

@@ -20,7 +20,7 @@ public class Album {
         this.albumReleaseDate = albumReleaseDate;
     }
 
-    public void addSongToAlbum(Song song){
+    public void AddSongToAlbum(Song song){
         songs.add(song);
     }
 

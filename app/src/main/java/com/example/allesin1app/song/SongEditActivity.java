@@ -46,7 +46,7 @@ public class SongEditActivity extends AppCompatActivity {
         this.songId = intent.getIntExtra("song id", 0);
         this.albumId = intent.getIntExtra("album id", 0);
 
-        album = gv.albumDataProvider.findAlbumById(albumId);
+        album = gv.adp.findAlbumById(albumId);
         song = album.findSongById(songId);
         setTitle(song.getName() + " (bewerking modus)");
 

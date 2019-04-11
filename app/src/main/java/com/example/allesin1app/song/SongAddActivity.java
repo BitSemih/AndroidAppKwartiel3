@@ -67,7 +67,7 @@ public class SongAddActivity extends AppCompatActivity {
             checked = true;
         }
         song = new Song(songName.getText().toString(), songGenres.getText().toString(), songArtist.getText().toString(), this.releaseDate, Integer.parseInt(songLength.getText().toString()), checked);
-        album.addSongToAlbum(song);
+        album.AddSongToAlbum(song);
         super.finish();
     }
 

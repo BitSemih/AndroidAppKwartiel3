@@ -38,7 +38,7 @@ public class AlbumListActivity extends AppCompatActivity {
 
         gv = (GlobalVars) getApplicationContext();
 
-        albums = gv.albumDataProvider.getAlbums();
+        albums = gv.adp.getAlbums();
         this.adapter = new AlbumAdapter(this, albums);
 
         ListView listView = findViewById(R.id.albumList);
@@ -55,7 +55,7 @@ public class AlbumListActivity extends AppCompatActivity {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         listItem = view.findViewById(R.id.listItem);
         albumName = listItem.getText().toString();
-        album = gv.albumDataProvider.findAlbumByName(albumName);
+        album = gv.adp.findAlbumByName(albumName);
         goToAlbum(album.getId());
     }
 
