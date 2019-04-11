@@ -11,7 +11,7 @@ import java.util.Date;
 // Rename to ~album application
 // Geen afkortingen van "adp" maken gwn voluit
 public class GlobalVars extends Application {
-    public AlbumDataProvider adp = new AlbumDataProvider();
+    public AlbumDataProvider albumDataProvider = new AlbumDataProvider();
 
     public GlobalVars() {
         //Data added to the app on startup
@@ -38,28 +38,28 @@ public class GlobalVars extends Application {
         Song song12 = new Song("Cool liedje", "Hip-hop", "Henk5334", new Date(1999, 4, 20), 300, true);
 
         //Add to albums
-        album1.AddSongToAlbum(song1);
-        album1.AddSongToAlbum(song6);
-        album1.AddSongToAlbum(song3);
-        album1.AddSongToAlbum(song4);
-        album1.AddSongToAlbum(song9);
-        album1.AddSongToAlbum(song12);
+        album1.addSongToAlbum(song1);
+        album1.addSongToAlbum(song6);
+        album1.addSongToAlbum(song3);
+        album1.addSongToAlbum(song4);
+        album1.addSongToAlbum(song9);
+        album1.addSongToAlbum(song12);
 
-        album2.AddSongToAlbum(song3);
-        album2.AddSongToAlbum(song5);
-        album2.AddSongToAlbum(song11);
+        album2.addSongToAlbum(song3);
+        album2.addSongToAlbum(song5);
+        album2.addSongToAlbum(song11);
 
-        album3.AddSongToAlbum(song8);
-        album3.AddSongToAlbum(song7);
-        album3.AddSongToAlbum(song5);
-        album3.AddSongToAlbum(song4);
+        album3.addSongToAlbum(song8);
+        album3.addSongToAlbum(song7);
+        album3.addSongToAlbum(song5);
+        album3.addSongToAlbum(song4);
 
-        album4.AddSongToAlbum(song2);
-        album4.AddSongToAlbum(song10);
+        album4.addSongToAlbum(song2);
+        album4.addSongToAlbum(song10);
 
-        album5.AddSongToAlbum(song9);
-        album5.AddSongToAlbum(song3);
-        album5.AddSongToAlbum(song2);
-        album5.AddSongToAlbum(song8);
+        album5.addSongToAlbum(song9);
+        album5.addSongToAlbum(song3);
+        album5.addSongToAlbum(song2);
+        album5.addSongToAlbum(song8);
     }
 }
