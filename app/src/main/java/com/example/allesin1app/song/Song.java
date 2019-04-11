@@ -1,14 +1,17 @@
 package com.example.allesin1app.song;
 
+import java.util.Date;
+
 public class Song {
 
-    private String songName, genres, artist, releaseDate;
+    private String songName, genres, artist;
+    private Date releaseDate;
     private int length;
     private boolean explicit;
     private static int lastId;
     private int id;
 
-    public Song(String songName, String genres, String artist, String releaseDate, int length, boolean explicit) {
+    public Song(String songName, String genres, String artist, Date releaseDate, int length, boolean explicit) {
         lastId++;
         this.id = lastId;
         this.songName = songName;
@@ -27,7 +30,7 @@ public class Song {
         return artist;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
@@ -59,7 +62,7 @@ public class Song {
         this.artist = artist;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 

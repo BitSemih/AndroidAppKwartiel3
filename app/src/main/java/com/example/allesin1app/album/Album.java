@@ -28,6 +28,10 @@ public class Album {
         return songs;
     }
 
+    public int getSongCount(){
+        return songs.size();
+    }
+
     public Song findSongById(int id){
         for (Song song : songs){
             if(song.getId() == (id)){

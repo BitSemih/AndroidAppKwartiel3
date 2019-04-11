@@ -41,14 +41,18 @@
             android:inputType="textPersonName"
             android:textColor="@color/colorText" />
 
-        <EditText
-            android:id="@+id/songReleaseDate"
+        <TextView
+            android:id="@+id/songEditDateView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:background="@color/colorTextHighlight"
             android:ems="10"
-            android:hint="@string/song_release_placeholder"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorText" />
+            android:onClick="setDate"
+            android:paddingLeft="10px"
+            android:paddingTop="25px"
+            android:paddingBottom="25px" />
 
         <EditText
             android:id="@+id/songLength"

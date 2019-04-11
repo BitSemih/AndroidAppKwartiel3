@@ -23,7 +23,6 @@ public class SongActivity extends AppCompatActivity {
     private Song song;
     private Album album;
     private GlobalVars gv;
-    private TextView songName, songGenres, songArtist, songReleaseDate, songLength, songExplicit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +43,7 @@ public class SongActivity extends AppCompatActivity {
             SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCE, 0);
             this.songId = settings.getInt("song id", 0);
             this.albumId = settings.getInt("album id", 0);
-
         }
-
-        System.out.println(songId);
-        System.out.println(albumId);
 
         this.album = gv.adp.findAlbumById(this.albumId);
         this.song = album.findSongById(this.songId);
@@ -82,7 +77,6 @@ public class SongActivity extends AppCompatActivity {
             this.comp.populateView(this.song);
         }
     }
-
 
     public void goEditSong(View view) {
         Intent intent = new Intent(this, SongEditActivity.class);

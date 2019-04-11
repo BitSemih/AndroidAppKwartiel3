@@ -11,11 +11,14 @@ import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 import com.example.allesin1app.song.Song;
 
+import java.util.Date;
+
 public class SongCompound extends LinearLayout {
 
     private Context context;
     private TextView songName, songGenres, songArtist, songReleaseDate, songLength, songExplicit;
     private GlobalVars gv;
+    private Date date;
 
 
     public SongCompound(Context context) {
@@ -48,10 +51,11 @@ public class SongCompound extends LinearLayout {
     }
 
     public void populateView(Song song) {
+        date = song.getReleaseDate();
         songName.setText(song.getName());
         songGenres.setText(song.getGenres());
         songArtist.setText(song.getArtist());
-        songReleaseDate.setText(song.getReleaseDate());
+        songReleaseDate.setText(new StringBuilder().append(date.getDay()).append("/").append(date.getMonth() + 1).append("/").append(date.getYear()));
         songLength.setText(String.valueOf(song.getLength()));
         if (song.isExplicit()) {
             songExplicit.setText("Explicit");

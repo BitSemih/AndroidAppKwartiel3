@@ -23,7 +23,6 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         super(context, 0, list);
         this.context = context;
         this.albumList = list;
-        System.out.println(list);
     }
 
     @NonNull
@@ -37,8 +36,9 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         Album currentAlbum = albumList.get(position);
 
         TextView name = listItem.findViewById(R.id.listItem);
+        TextView albumSongCount = listItem.findViewById(R.id.albumSongCount);
         name.setText(currentAlbum.getName());
-
+        albumSongCount.setText(currentAlbum.getSongCount());
         return listItem;
     }
 }
