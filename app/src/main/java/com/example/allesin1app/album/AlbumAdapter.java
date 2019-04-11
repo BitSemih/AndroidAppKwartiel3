@@ -30,7 +30,7 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if (listItem == null) {
-            listItem = LayoutInflater.from(context).inflate(R.layout.generic_list_item, parent, false);
+            listItem = LayoutInflater.from(context).inflate(R.layout.album_list_item, parent, false);
         }
 
         Album currentAlbum = albumList.get(position);
@@ -38,7 +38,8 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         TextView name = listItem.findViewById(R.id.listItem);
         TextView albumSongCount = listItem.findViewById(R.id.albumSongCount);
         name.setText(currentAlbum.getName());
-        albumSongCount.setText(currentAlbum.getSongCount());
+        int songCount = currentAlbum.getSongCount();
+        albumSongCount.setText(String.valueOf(songCount));
         return listItem;
     }
 }

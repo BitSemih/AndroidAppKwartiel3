@@ -13,4 +13,10 @@
         android:textSize="16dip"
         android:textStyle="bold"></TextView>
 
+    <TextView
+        android:id="@+id/albumSongCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:textColor="@color/colorTextHighlight" />
 </LinearLayout>
