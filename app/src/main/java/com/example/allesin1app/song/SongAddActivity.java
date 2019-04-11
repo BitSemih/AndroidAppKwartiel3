@@ -23,7 +23,7 @@ import java.util.Date;
 
 public class SongAddActivity extends AppCompatActivity {
 
-    private EditText songName, songGenres, songArtist, songReleaseDate, songLength;
+    private EditText songName, songGenres, songArtist, songLength;
     private Album album;
     private Song song;
     private CheckBox songExplicit;
@@ -50,7 +50,6 @@ public class SongAddActivity extends AppCompatActivity {
         songName = findViewById(R.id.songName);
         songGenres = findViewById(R.id.songGenres);
         songArtist = findViewById(R.id.songArtist);
-        songReleaseDate = findViewById(R.id.songReleaseDate);
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
         songAddDateView = findViewById(R.id.songAddDateView);

@@ -19,6 +19,8 @@
     <string name="album_add_name" translatable="false">Album naam</string>
     <string name="album_add_release" translatable="false">Uitgeef datum</string>
     <string name="album_add_confirm" translatable="false">Voeg album toe</string>
+    <string name="go_to_album_list_nav" translatable="false">Album lijst</string>
+    <string name="go_to_album_list_button" translatable="false">Ga naar album lijst</string>
     <string name="song_add_button" translatable="false">Voeg lied toe</string>
     <string name="song_edit_button">Bevestig bewerking</string>
     <string name="title_activity_song_edit">SongEditActivity</string>

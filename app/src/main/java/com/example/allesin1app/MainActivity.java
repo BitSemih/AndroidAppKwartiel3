@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    //Close the main hamburger menu when pressed on the right side of the screen
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -74,21 +74,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_albumlist:
                 Intent intent = new Intent(this, AlbumListActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.nav_gallery:
-
-                break;
-            case R.id.nav_slideshow:
-
-                break;
-            case R.id.nav_manage:
-
-                break;
-            case R.id.nav_share:
-
-                break;
-            case R.id.nav_send:
-
                 break;
         }
 
