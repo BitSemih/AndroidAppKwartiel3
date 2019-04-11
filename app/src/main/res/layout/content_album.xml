@@ -8,6 +8,7 @@
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".album.AlbumActivity"
+
     tools:showIn="@layout/activity_album">
 
     <LinearLayout
@@ -26,6 +27,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:nestedScrollingEnabled="true"
                 android:scrollbars="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
