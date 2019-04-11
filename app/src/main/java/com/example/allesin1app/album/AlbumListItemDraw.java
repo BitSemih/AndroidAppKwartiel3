@@ -5,21 +5,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-import java.util.jar.Attributes;
-
+//Ondraw class for a album list item
 public class AlbumListItemDraw extends View {
     private Paint paint;
-    private Rect rectangle;
-    private int count, screenX, screenY, nextRect, maxRectanglesOnRow, nextRectHeight, rowNumber;
+    private int count, screenX, nextRect, maxRectanglesOnRow, nextRectHeight, rowNumber;
     private Context context;
     private Point size;
 
+    //Constructors for different usages
     public AlbumListItemDraw(Context context) {
         super(context);
         this.context = context;
@@ -43,15 +41,16 @@ public class AlbumListItemDraw extends View {
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.parseColor("#00D554"));
 
+        //Accessing window manager to get info on screen width
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         size = new Point();
         display.getSize(size);
         this.screenX = size.x;
-        this.screenY = size.y;
     }
 
-    public void rectangleCount(int count) {
+    //Method for setting how much rectangles have to be drawn
+    public void setRectangleCount(int count) {
         this.count = count;
     }
 
@@ -63,11 +62,16 @@ public class AlbumListItemDraw extends View {
         rowNumber = 1;
         maxRectanglesOnRow = screenX / 80;
         for (int i = 0; i < this.count; i++) {
+            //Draw a rectangle
             canvas.drawRect(30 + nextRect, 10 + nextRectHeight, 80 + nextRect, 20 + nextRectHeight, paint);
+            //Add 80px for every pixel drawn
             nextRect += 80;
+            //Check if rectangle iteration is gonna be drawn outside of screen
             if ((i + 2) > (maxRectanglesOnRow * rowNumber)) {
+                //Add height to the base rectangle height
                 nextRectHeight += 20;
                 rowNumber++;
+                //Resetting rectangle position so it is drawn from the beginning on a new line
                 nextRect = 0;
             }
         }

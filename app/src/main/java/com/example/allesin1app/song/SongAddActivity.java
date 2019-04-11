@@ -17,12 +17,11 @@ import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
 import com.example.allesin1app.album.Album;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+//Activity for adding a song
 public class SongAddActivity extends AppCompatActivity {
-
     private EditText songName, songGenres, songArtist, songLength;
     private Album album;
     private Song song;
@@ -31,6 +30,7 @@ public class SongAddActivity extends AppCompatActivity {
     private int albumId, year, month, day;
     private boolean checked = false;
     private Date releaseDate;
+    private AlbumApplication albumApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,14 @@ public class SongAddActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        AlbumApplication gv = (AlbumApplication) getApplicationContext();
+        this.albumApplication = (AlbumApplication) getApplicationContext();
+
+        //Getting album id that was given on creation of this activity
         Intent intent = getIntent();
-
         albumId = intent.getIntExtra("album id", 0);
-        album = gv.albumDataProvider.findAlbumById(albumId);
+        album = albumApplication.albumDataProvider.findAlbumById(albumId);
 
+        //Finding fields and assigning to variables
         songName = findViewById(R.id.songName);
         songGenres = findViewById(R.id.songGenres);
         songArtist = findViewById(R.id.songArtist);
@@ -54,6 +56,9 @@ public class SongAddActivity extends AppCompatActivity {
         songExplicit = findViewById(R.id.songExplicit);
         songAddDateView = findViewById(R.id.songAddDateView);
 
+        setTitle(R.string.song_add_title);
+
+        //Initializing the calender utility and setting vars that represent today
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -62,15 +67,19 @@ public class SongAddActivity extends AppCompatActivity {
         showDate(year, month, day);
     }
 
-    public void addSong(View view){
-        if (songExplicit.isChecked()){
+    //Method for adding song to album
+    public void addSong(View view) {
+        //Check if the "explicit" checkbox has been checked
+        if (songExplicit.isChecked()) {
             checked = true;
         }
+        //Creating song and adding to album
         song = new Song(songName.getText().toString(), songGenres.getText().toString(), songArtist.getText().toString(), this.releaseDate, Integer.parseInt(songLength.getText().toString()), checked);
         album.AddSongToAlbum(song);
         super.finish();
     }
 
+    //On creation of a datepicker popup
     protected Dialog onCreateDialog(int id) {
         if (id == 999) {
             return new DatePickerDialog(this, R.style.DialogTheme, myDateListener, year, month, day);
@@ -78,17 +87,19 @@ public class SongAddActivity extends AppCompatActivity {
         return null;
     }
 
+    //Method for placing the chosen date in a textfield and saving it in a var
     private void showDate(int year, int month, int day) {
         this.releaseDate = new Date(year, month, day);
-        this.songAddDateView.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year).append(" - Klik om het te veranderen"));
-        System.out.println(this.releaseDate);
+        this.songAddDateView.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year).append(" ").append(getResources().getString(R.string.datepicker_button_text)));
     }
 
+    //Initializing the datepicker popup
     public void setDate(View view) {
         showDialog(999);
-        Toast.makeText(getApplicationContext(), "Kies uw uitbreng datum", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.datepicker_toast, Toast.LENGTH_SHORT).show();
     }
 
+    //Datepicker confirm listener
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {

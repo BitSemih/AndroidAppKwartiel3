@@ -11,6 +11,7 @@ public class Song {
     private static int lastId;
     private int id;
 
+    //On creation of a song
     public Song(String songName, String genres, String artist, Date releaseDate, int length, boolean explicit) {
         lastId++;
         this.id = lastId;
@@ -22,6 +23,7 @@ public class Song {
         this.explicit = explicit;
     }
 
+    //Getters and setters
     public String getGenres() {
         return genres;
     }
@@ -72,16 +74,5 @@ public class Song {
 
     public void setExplicit(boolean explicit) {
         this.explicit = explicit;
-    }
-
-    @Override
-    public String toString() {
-        return "Song{" +
-                "songName='" + songName + '\'' +
-                ", genres='" + genres + '\'' +
-                ", artist='" + artist + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", length=" + length +
-                '}';
     }
 }

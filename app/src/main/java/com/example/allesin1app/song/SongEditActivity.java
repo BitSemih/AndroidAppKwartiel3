@@ -20,10 +20,10 @@ import com.example.allesin1app.album.Album;
 import java.util.Calendar;
 import java.util.Date;
 
+//Activity for editing a song
 public class SongEditActivity extends AppCompatActivity {
-
-    private int songId, albumId, year, month, day;
-    private AlbumApplication gv;
+    private int songId, albumId;
+    private AlbumApplication albumApplication;
     private Album album;
     private Song song;
     private Date date, newReleaseDate;
@@ -40,16 +40,20 @@ public class SongEditActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.gv = (AlbumApplication) getApplicationContext();
+        this.albumApplication = (AlbumApplication) getApplicationContext();
 
+        //Getting album id and song id that were given on creation of this activity
         Intent intent = getIntent();
         this.songId = intent.getIntExtra("song id", 0);
         this.albumId = intent.getIntExtra("album id", 0);
 
-        album = gv.albumDataProvider.findAlbumById(albumId);
-        song = album.findSongById(songId);
-        setTitle(song.getName() + " (bewerking modus)");
+        //Searching for album and song in that album
+        album = albumApplication.albumDataProvider.findAlbumById(albumId);
+        this.song = album.findSongById(songId);
+        //Setting the title of the activity
+        setTitle(song.getName() + " " + getResources().getString(R.string.song_edit_subtitle));
 
+        //Finding fields and assigning to variables
         songName = findViewById(R.id.songName);
         songGenres = findViewById(R.id.songGenres);
         songArtist = findViewById(R.id.songArtist);
@@ -57,22 +61,48 @@ public class SongEditActivity extends AppCompatActivity {
         songLength = findViewById(R.id.songLength);
         songExplicit = findViewById(R.id.songExplicit);
 
-        Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-
+        //Check if song is found; so if you came properly from an song overview activity
         if (song != null) {
             date = song.getReleaseDate();
             songName.setText(song.getName());
             songGenres.setText(song.getGenres());
             songArtist.setText(song.getArtist());
-            showDate(year, month, day);
+            showDate(song.getReleaseDate().getYear(), song.getReleaseDate().getMonth(), song.getReleaseDate().getDay());
             songLength.setText(String.valueOf(song.getLength()));
             songExplicit.setChecked(song.isExplicit());
         }
     }
 
+    //On creation of a datepicker popup
+    protected Dialog onCreateDialog(int id) {
+        if (id == 999) {
+            //Initializing datepicker popup
+            return new DatePickerDialog(this, R.style.DialogTheme, myDateListener, song.getReleaseDate().getYear(), song.getReleaseDate().getMonth(), song.getReleaseDate().getDay());
+        }
+        return null;
+    }
+
+    //Method for placing the chosen date in a textfield and saving it in a var
+    private void showDate(int year, int month, int day) {
+        this.newReleaseDate = new Date(year, month, day);
+        this.songEditDateView.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year).append(" ").append(getResources().getString(R.string.datepicker_button_text)));
+    }
+
+    //Initializing the datepicker popup
+    public void setDate(View view) {
+        showDialog(999);
+        Toast.makeText(getApplicationContext(), R.string.datepicker_toast, Toast.LENGTH_SHORT).show();
+    }
+
+    //Datepicker confirm listener
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            showDate(arg1, arg2, arg3);
+        }
+    };
+
+    //Method for saving changes made by the user
     public void saveSongChanges(View view) {
         song.setSongName(songName.getText().toString());
         song.setGenres(songGenres.getText().toString());
@@ -82,28 +112,4 @@ public class SongEditActivity extends AppCompatActivity {
         song.setExplicit(songExplicit.isChecked());
         finish();
     }
-
-    protected Dialog onCreateDialog(int id) {
-        if (id == 999) {
-            return new DatePickerDialog(this, R.style.DialogTheme, myDateListener, year, month, day);
-        }
-        return null;
-    }
-
-    private void showDate(int year, int month, int day) {
-        this.newReleaseDate = new Date(year, month, day);
-        this.songEditDateView.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year));
-    }
-
-    public void setDate(View view) {
-        showDialog(999);
-        Toast.makeText(getApplicationContext(), "Kies uw uitbreng datum", Toast.LENGTH_SHORT).show();
-    }
-
-    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            showDate(arg1, arg2, arg3);
-        }
-    };
 }

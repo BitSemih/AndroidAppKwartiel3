@@ -6,21 +6,19 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.allesin1app.AlbumApplication;
 import com.example.allesin1app.R;
-import com.example.allesin1app.album.Album;
 import com.example.allesin1app.song.Song;
 
 import java.util.Date;
 
+//Custom compound controller for song overview
 public class SongCompound extends LinearLayout {
 
     private Context context;
     private TextView songName, songGenres, songArtist, songReleaseDate, songLength, songExplicit;
-    private AlbumApplication gv;
     private Date date;
 
-
+    //Constructors for different usages
     public SongCompound(Context context) {
         super(context);
         this.context = context;
@@ -39,6 +37,7 @@ public class SongCompound extends LinearLayout {
         initializeView();
     }
 
+    //Finding views after inflating success
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -50,6 +49,7 @@ public class SongCompound extends LinearLayout {
         songExplicit = this.findViewById(R.id.songExplicit);
     }
 
+    //Populating view with data from song
     public void populateView(Song song) {
         date = song.getReleaseDate();
         songName.setText(song.getName());
@@ -57,13 +57,15 @@ public class SongCompound extends LinearLayout {
         songArtist.setText(song.getArtist());
         songReleaseDate.setText(new StringBuilder().append(date.getDay()).append("/").append(date.getMonth() + 1).append("/").append(date.getYear()));
         songLength.setText(String.valueOf(song.getLength()));
+        //Check if song is explicit
         if (song.isExplicit()) {
-            songExplicit.setText("Explicit");
+            songExplicit.setText(R.string.is_explicit);
         } else {
-            songExplicit.setText("Niet Explicit");
+            songExplicit.setText(R.string.is_not_explicit);
         }
     }
 
+    //Inflate view
     private void initializeView() {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.compound_song_view, this);

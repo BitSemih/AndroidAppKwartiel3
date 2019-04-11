@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name" translatable="false">Allesin1app</string>
+    <string name="app_name" translatable="false">Music Storage</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
-    <string name="nav_header_title" translatable="false">Alles In 1 App</string>
-    <string name="nav_header_subtitle" translatable="false">De efficiente app voor u!</string>
-    <string name="nav_header_desc" translatable="false">Navigation header</string>
-    <string name="action_settings" translatable="false">Settings</string>
+    <string name="nav_header_title" translatable="false">Music Storage</string>
+    <string name="nav_header_desc" translatable="false">Music Storage logo</string>
+    <string name="nav_header_subtitle" translatable="false">De lichte en efficiente muziek manager bij de hand</string>
     <string name="title_activity_song_list" translatable="false">Lied Bibliotheek</string>
     <string name="song_name_placeholder" translatable="false">Lied Naam</string>
     <string name="song_genre_placeholder" translatable="false">Genre</string>
@@ -24,4 +23,10 @@
     <string name="song_add_button" translatable="false">Voeg lied toe</string>
     <string name="song_edit_button">Bevestig bewerking</string>
     <string name="title_activity_song_edit">SongEditActivity</string>
+    <string name="is_explicit">Expliciet</string>
+    <string name="is_not_explicit">Niet expliciet</string>
+    <string name="datepicker_toast">Kies uw uitbreng datum</string>
+    <string name="datepicker_button_text"> - Klik om het te veranderen</string>
+    <string name="song_edit_subtitle"> (Bewerking modus)</string>
+    <string name="song_add_title"> Voeg lied toe</string>
 </resources>

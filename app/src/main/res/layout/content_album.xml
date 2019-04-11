@@ -21,7 +21,7 @@
 
             <ListView
                 android:id="@+id/songList"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="727dp"
                 android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="parent"

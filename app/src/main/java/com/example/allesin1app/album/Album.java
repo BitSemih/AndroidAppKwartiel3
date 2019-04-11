@@ -12,6 +12,7 @@ public class Album {
     private String albumName;
     private Date albumReleaseDate;
 
+    //On creation of album
     public Album(String albumName, Date albumReleaseDate){
         songs = new ArrayList<>();
         lastid++;
@@ -20,18 +21,7 @@ public class Album {
         this.albumReleaseDate = albumReleaseDate;
     }
 
-    public void AddSongToAlbum(Song song){
-        songs.add(song);
-    }
-
-    public ArrayList<Song> getAlbumSongs(){
-        return songs;
-    }
-
-    public int getSongCount(){
-        return songs.size();
-    }
-
+    //Find specific song by given id
     public Song findSongById(int id){
         for (Song song : songs){
             if(song.getId() == (id)){
@@ -41,6 +31,7 @@ public class Album {
         return null;
     }
 
+    //Finding specific song by given name
     public Song findSongByName(String name){
         for (Song song : songs){
             if(song.getName().equals(name)){
@@ -54,6 +45,15 @@ public class Album {
         songs.remove(song);
     }
 
+    //Getters
+    public int getSongCount(){
+        return songs.size();
+    }
+
+    public ArrayList<Song> getAlbumSongs(){
+        return songs;
+    }
+
     public int getId(){
         return id;
     }
@@ -62,13 +62,7 @@ public class Album {
         return albumName;
     }
 
-    @Override
-    public String toString() {
-        return "Album{" +
-                "id=" + id +
-                ", songs=" + songs +
-                ", albumName='" + albumName + '\'' +
-                ", albumReleaseDate='" + albumReleaseDate + '\'' +
-                '}';
+    public void AddSongToAlbum(Song song) {
+        songs.add(song);
     }
 }
