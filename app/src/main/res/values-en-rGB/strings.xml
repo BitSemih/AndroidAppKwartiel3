@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="album_add_confirm">Add album</string>
+    <string name="album_add_name">Album name</string>
+    <string name="album_add_release">Release date</string>
+    <string name="datepicker_button_text">" - Click to change date"</string>
+    <string name="datepicker_toast">Choose release date</string>
+    <string name="go_to_album_list_button">Go to album list</string>
+    <string name="go_to_album_list_nav">Album list</string>
+    <string name="is_explicit">Explicit</string>
+    <string name="is_not_explicit">Not Explicit</string>
+    <string name="nav_header_subtitle">The light and efficient music manager on the go</string>
+    <string name="song_add_button">Confirm song</string>
+    <string name="song_add_title">Add song</string>
+    <string name="song_artist_placeholder">Artist</string>
+    <string name="song_edit_button">Confirm edit</string>
+    <string name="song_edit_subtitle">" (Edit mode)"</string>
+    <string name="song_explicit_placeholder">Explicit</string>
+    <string name="song_genre_placeholder">Genre</string>
+    <string name="song_length_placeholder">Length</string>
+    <string name="song_name_placeholder">Song name</string>
+    <string name="song_release_placeholder">Release date</string>
+    <string name="title_activity_album">Album title</string>
+    <string name="title_activity_album_list">Album library</string>
+    <string name="title_activity_song_edit">Song edit</string>
+    <string name="title_activity_song_list">Song library</string>
+    <string name="title_add_album">Add album</string>
+</resources>

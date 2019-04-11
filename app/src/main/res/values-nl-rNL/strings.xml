@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="album_add_confirm">Voeg album toe</string>
+    <string name="album_add_name">Album naam</string>
+    <string name="album_add_release">Uitgeef datum</string>
+    <string name="datepicker_button_text">" - Klik om het te veranderen"</string>
+    <string name="datepicker_toast">Kies uw uitbreng datum</string>
+    <string name="go_to_album_list_button">Ga naar album lijst</string>
+    <string name="go_to_album_list_nav">Album lijst</string>
+    <string name="is_explicit">Expliciet</string>
+    <string name="is_not_explicit">Niet expliciet</string>
+    <string name="nav_header_subtitle">De lichte en efficiente muziek manager bij de hand</string>
+    <string name="song_add_button">Voeg lied toe</string>
+    <string name="song_add_title">Voeg lied toe</string>
+    <string name="song_artist_placeholder">Artiest</string>
+    <string name="song_edit_button">Bevestig bewerking</string>
+    <string name="song_edit_subtitle">" (Bewerking modus)"</string>
+    <string name="song_explicit_placeholder">Expliciet</string>
+    <string name="song_genre_placeholder">Genre</string>
+    <string name="song_length_placeholder">Lengte</string>
+    <string name="song_name_placeholder">Lied Naam</string>
+    <string name="song_release_placeholder">Uitbreng Datum</string>
+    <string name="title_activity_album">Album Titel</string>
+    <string name="title_activity_album_list">Album Bibliotheek</string>
+    <string name="title_activity_song_edit">Lied bewerking</string>
+    <string name="title_activity_song_list">Lied Bibliotheek</string>
+    <string name="title_add_album">Album toevoegen</string>
+</resources>
